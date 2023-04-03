@@ -1,0 +1,50 @@
+
+class Solution{
+  public:
+    //Function to return the maximum sum of non-adjacent nodes.
+    pair<int,int> ans(Node* root){
+        
+        if(root == NULL)
+        {
+            pair<int,int> p = make_pair(0,0);
+            return p;
+        }
+        
+        pair<int,int> leftpair = ans(root->left);
+          pair<int,int> rightpair = ans(root->right);
+        
+        pair<int,int> result ;
+        
+        result.first = root->data + leftpair.second + rightpair.second;
+        
+        result.second = max(leftpair.first,leftpair.second) + max(rightpair.first,rightpair.second);
+        
+        
+return result;        
+        
+    }
+    
+    int getMaxSum(Node *root) 
+    {
+        
+        
+        pair<int,int> p = ans(root);
+        int answer = max(p.first,p.second);
+        
+        return answer;
+
+        
+        
+        
+        
+        // Add your code here
+        
+        
+        
+        
+        
+        
+        
+         
+    }
+};
